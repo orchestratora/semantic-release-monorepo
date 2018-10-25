@@ -61,6 +61,8 @@ const onlyPackageCommits = async commits => {
   });
 };
 
+const allCommits = async commits => true;
+
 // Async version of Ramda's `tap`
 const tapA = fn => async x => {
   await fn(x);
@@ -79,11 +81,12 @@ const logFilteredCommitCount = logger => async ({ commits }) => {
 
 const withOnlyPackageCommits = plugin => async (pluginConfig, config) => {
   const { logger } = config;
+  const isFixedMode = !!pluginConfig.fixedMode;
 
   return plugin(
     pluginConfig,
     await pipeP(
-      mapCommits(onlyPackageCommits),
+      mapCommits(isFixedMode ? allCommits : onlyPackageCommits),
       tapA(logFilteredCommitCount(logger))
     )(config)
   );
