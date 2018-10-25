@@ -27,7 +27,7 @@ In order to avoid version collisions, release git tags are namespaced using the 
 ## Install
 
 ```bash
-npm install -D @orchestrator/semantic-release semantic-release-monorepo
+npm install -D semantic-release @orchestrator/semantic-release-monorepo
 ```
 
 ## Usage
