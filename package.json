@@ -6,7 +6,9 @@
   "files": [
     "src"
   ],
-  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "format": "prettier --write --single-quote --trailing-comma es5",
     "format:all": "yarn format \"./**/*.js\"",
