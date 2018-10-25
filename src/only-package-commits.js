@@ -61,7 +61,7 @@ const onlyPackageCommits = async commits => {
   });
 };
 
-const allCommits = async commits => true;
+const allCommits = async commits => withFiles(commits);
 
 // Async version of Ramda's `tap`
 const tapA = fn => async x => {
