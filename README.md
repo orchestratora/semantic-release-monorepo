@@ -4,6 +4,7 @@
 
 Apply [`semantic-release`'s](https://github.com/semantic-release/semantic-release) automatic publishing to a monorepo.
 
+
 ## Extra Config
 
 This fork adds config `--fixedMode true` that allows to stop filtering commits by file paths.
