@@ -4,6 +4,12 @@
 
 Apply [`semantic-release`'s](https://github.com/semantic-release/semantic-release) automatic publishing to a monorepo.
 
+## Extra Config
+
+This fork adds config `--fixedMode true` that allows to stop filtering commits by file paths.
+
+It is useful for monorepos where all packages must be released with the same version.
+
 ## Why
 
 The default configuration of `semantic-release` assumes a one-to-one relationship between a GitHub repository and an `npm` package.
@@ -21,7 +27,7 @@ In order to avoid version collisions, release git tags are namespaced using the 
 ## Install
 
 ```bash
-npm install -D semantic-release semantic-release-monorepo
+npm install -D @orchestrator/semantic-release semantic-release-monorepo
 ```
 
 ## Usage
@@ -29,7 +35,7 @@ npm install -D semantic-release semantic-release-monorepo
 Run `semantic-release-monorepo` for the package in the current working directory:
 
 ```bash
-npx semantic-release -e semantic-release-monorepo
+npx semantic-release -e @orchestrator/semantic-release-monorepo
 ```
 
 It helps to think about `semantic-release-monorepo` as a variation on `semantic-release`'s default behavior, using the latter's plugin system to adapt it to work with a monorepo.
@@ -39,7 +45,7 @@ It helps to think about `semantic-release-monorepo` as a variation on `semantic-
 The monorepo management tool [`lerna`](https://github.com/lerna/lerna) can be used to run `semantic-release-monorepo` across all packages in a monorepo:
 
 ```bash
-lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo
+lerna exec --concurrency 1 -- npx --no-install semantic-release -e @orchestrator/semantic-release-monorepo
 ```
 
 Note that this requires installing `semantic-release` and `semantic-release-monorepo` for each package.
@@ -117,7 +123,7 @@ Pre-configures the [`tagFormat` option](https://github.com/semantic-release/sema
 If you are using Lerna, you can customize the format using the following command:
 
 ```
-"semantic-release": "lerna exec --concurrency 1 -- semantic-release -e semantic-release-monorepo --tag-format='${LERNA_PACKAGE_NAME}-v\\${version}'"
+"semantic-release": "lerna exec --concurrency 1 -- semantic-release -e @orchestrator/semantic-release-monorepo --tag-format='${LERNA_PACKAGE_NAME}-v\\${version}'"
 ```
 
 Where `'${LERNA_PACKAGE_NAME}-v\\${version}'` is the string you want to customize.  
